@@ -27,22 +27,21 @@ function draw() {
   background(220);
   
   if (mouseIsPressed) {
-    // let circleSpedUp = false;
-    // for (const item of circles) {
-    //   const distance = Math.sqrt(Math.pow(mouseX - item.x, 2) + Math.pow(mouseY - item.y, 2));
-    //   if (distance < 10) {
-    //     item.v_x *= 2;
-    //     item.v_y *= 2;
-    //     circleSpedUp = true;
-    //   }
-    // }
-    // if (!circleSpedUp) {
-      let circle = newCircle();
+    let circleSpedUp = false;
+    for (const item of circles) {
+      const distance = Math.sqrt(Math.pow(mouseX - item.x, 2) + Math.pow(mouseY - item.y, 2));
+      if (distance < 10) {
+        item.v_x *= 2;
+        item.v_y *= 2;
+        circleSpedUp = true;
+      }
+    }
+    if (!circleSpedUp) {
+      let circle = newCircle(mouseX, mouseY);
       
       circles.push(circle);
-      console.log(circles);
 
-    // }
+    }
   }
   else {
     ellipse(mouseX, mouseY, circleWidth, circleHeight);
