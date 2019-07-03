@@ -4,10 +4,26 @@ function setup() {
   createCanvas(400, 400);
 }
 
+const circles = [];
+
 function draw() {
   background(220);
   
   if (mouseIsPressed) {
-    ellipse(mouseX, mouseY, 80, 80);
+    circles.push({x:mouseX, y:mouseY, r: Math.random() * 255, g: Math.random() * 255, b:Math.random() * 255});
   }
+  
+  renderCircles();
+    
+  
+}
+
+
+function renderCircles(){
+  for (const item of circles) {
+    ellipse(item.x, item.y, 80, 80);
+    fill(item.r, item.g, item.b);
+  }
+  
+function moveCircles
 }
