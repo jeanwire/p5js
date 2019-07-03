@@ -7,15 +7,17 @@ const circleWidth = 20;
 const circleHeight = 20; 
 
 
-  const newCircle = {
-    x:200, 
-    y:200, 
+function newCircle(x_pos, y_pos){
+  return { 
+    x: x_pos, 
+    y: y_pos, 
     r: Math.random() * 255, 
     g: Math.random() * 255, 
     b: Math.random() * 255,
     v_x: Math.random() - 0.5,
     v_y: Math.random() - 0.5,
   }
+}
 
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
@@ -24,29 +26,23 @@ function setup() {
 function draw() {
   background(220);
   
-  // const newCircle = {
-  //   x:mouseX, 
-  //   y:mouseY, 
-  //   r: Math.random() * 255, 
-  //   g: Math.random() * 255, 
-  //   b: Math.random() * 255,
-  //   v_x: Math.random() - 0.5,
-  //   v_y: Math.random() - 0.5,
-  // }
-  
   if (mouseIsPressed) {
-    let circleSpedUp = false;
-    for (const item of circles) {
-      const distance = Math.sqrt(Math.pow(mouseX - item.x, 2) + Math.pow(mouseY - item.y, 2));
-      if (distance < 10) {
-        item.v_x *= 2;
-        item.v_y *= 2;
-        circleSpedUp = true;
-      }
-    }
-    if (!circleSpedUp) {
-      circles.push(newCircle);
-    }
+    // let circleSpedUp = false;
+    // for (const item of circles) {
+    //   const distance = Math.sqrt(Math.pow(mouseX - item.x, 2) + Math.pow(mouseY - item.y, 2));
+    //   if (distance < 10) {
+    //     item.v_x *= 2;
+    //     item.v_y *= 2;
+    //     circleSpedUp = true;
+    //   }
+    // }
+    // if (!circleSpedUp) {
+      let circle = newCircle();
+      
+      circles.push(circle);
+      console.log(circles);
+
+    // }
   }
   else {
     ellipse(mouseX, mouseY, circleWidth, circleHeight);
@@ -59,8 +55,8 @@ function draw() {
 
 function renderCircles(){
   for (const item of circles) {
-    ellipse(item.x, item.y, circleWidth, circleHeight);
     fill(item.r, item.g, item.b);
+    ellipse(item.x, item.y, circleWidth, circleHeight);
   }
   
 }
