@@ -6,6 +6,17 @@ const canvasHeight = 400;
 const circleWidth = 20;
 const circleHeight = 20; 
 
+
+  const newCircle = {
+    x:200, 
+    y:200, 
+    r: Math.random() * 255, 
+    g: Math.random() * 255, 
+    b: Math.random() * 255,
+    v_x: Math.random() - 0.5,
+    v_y: Math.random() - 0.5,
+  }
+
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
 }
@@ -13,15 +24,15 @@ function setup() {
 function draw() {
   background(220);
   
-  const newCircle = {
-    x:mouseX, 
-    y:mouseY, 
-    r: Math.random() * 255, 
-    g: Math.random() * 255, 
-    b: Math.random() * 255,
-    v_x: Math.random() - 0.5,
-    v_y: Math.random() - 0.5,
-  }
+  // const newCircle = {
+  //   x:mouseX, 
+  //   y:mouseY, 
+  //   r: Math.random() * 255, 
+  //   g: Math.random() * 255, 
+  //   b: Math.random() * 255,
+  //   v_x: Math.random() - 0.5,
+  //   v_y: Math.random() - 0.5,
+  // }
   
   if (mouseIsPressed) {
     let circleSpedUp = false;
@@ -36,6 +47,9 @@ function draw() {
     if (!circleSpedUp) {
       circles.push(newCircle);
     }
+  }
+  else {
+    ellipse(mouseX, mouseY, circleWidth, circleHeight);
   }
   
   renderCircles();
