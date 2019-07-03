@@ -24,7 +24,7 @@ function draw() {
   }
   
   if (mouseIsPressed) {
-    const circleSpedUp = false;
+    let circleSpedUp = false;
     for (const item of circles) {
       const distance = Math.sqrt(Math.pow(mouseX - item.x, 2) + Math.pow(mouseY - item.y, 2));
       if (distance < 10) {
