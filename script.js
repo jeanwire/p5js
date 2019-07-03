@@ -24,10 +24,18 @@ function draw() {
   }
   
   if (mouseIsPressed) {
+    const circleSpedUp = false;
     for (const item of circles) {
-      const 
+      const distance = Math.sqrt(Math.pow(mouseX - item.x, 2) + Math.pow(mouseY - item.y, 2));
+      if (distance < 10) {
+        item.v_x *= 2;
+        item.v_y *= 2;
+        circleSpedUp = true;
+      }
     }
-    circles.push(newCircle);
+    if (!circleSpedUp) {
+      circles.push(newCircle);
+    }
   }
   
   renderCircles();
