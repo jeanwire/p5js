@@ -3,8 +3,8 @@
 const circles = [];
 const canvasWidth = 400;
 const canvasHeight = 400;
-const circleWidth = 80;
-const circleHeight = 80; 
+const circleWidth = 20;
+const circleHeight = 20; 
 
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
@@ -20,10 +20,13 @@ function draw() {
     g: Math.random() * 255, 
     b: Math.random() * 255,
     v_x: Math.random() - 0.5,
-    v_y: Math.random() - 0.5
+    v_y: Math.random() - 0.5,
   }
   
   if (mouseIsPressed) {
+    for (const item of circles) {
+      const 
+    }
     circles.push(newCircle);
   }
   
@@ -43,9 +46,12 @@ function renderCircles(){
 function updatePosition() {
   for (const item of circles) {
     item.x = item.x + item.v_x;
-    if (item.x >= canvasWidth - circleWidth || item.x <= canvasWidth+circleWidth) {
+    if (item.x >= canvasWidth - circleWidth / 2 || item.x <= 0 + circleWidth / 2) {
       item.v_x = -item.v_x;
     }
     item.y = item.y + item.v_y;
+    if (item.y >= canvasHeight - circleHeight / 2 || item.y <= 0 + circleHeight / 2) {
+      item.v_y = -item.v_y;
+    }
   }
 }
